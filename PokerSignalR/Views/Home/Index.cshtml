@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="container">
+
+    <table class="e-table">
+        <tr>
+            <td>Seesion ID :</td>
+            <td><input type="text" class="session e-input" id="sessionID" disabled/> </td>
+        </tr>
+        <tr>
+            <td><span>Name:</span></td>
+            <td>
+            <input type="text" id="JoineeName" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="open" class="e-btn e-control" onclick="openPokers()">Join</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="partial" class="e-partial-view" style="display: none">
+        @{Html.RenderPartial("Sessions"); }
+    </div>
+</div>
+
+
+<script>
+
+    // Initialize DropDownList component
+    var listObj = new ej.dropdowns.DropDownList({
+        dataSource:['12','112'],
+        // set the index value to select an item based on index at initial rendering
+        index: 2,
+        // set the placeholder to DropDownList input element
+        placeholder: 'Select a game',
+        // set the height of the popup element
+        popupHeight: '200px',
+
+    });
+    listObj.appendTo('#JoineeName');
+    function openPokers() {
+        $('.e-table').css('display', 'none');
+        $('.e-partial-view').css('display', 'block');
+    }
+</script>
+
+<style>
+    .e-table{
+        margin-top: 8%;
+    }
+ .e-table td {
+    padding: 10px;
+}
+</style>
