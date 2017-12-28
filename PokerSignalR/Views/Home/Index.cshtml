@@ -4,25 +4,37 @@
 
 
 
-<div class="container">
+<div class="container e-bigger">
+    <div class="col-md-8 pane">
+        <h3>Scrum Master</h3> 
+            <h4> lets create a session for scrum poker</h4>
 
-    <table class="e-table">
-        <tr>
-            <td>Seesion ID :</td>
-            <td><input type="text" class="session e-input" id="sessionID" disabled/> </td>
-        </tr>
-        <tr>
-            <td><span>Name:</span></td>
-            <td>
-            <input type="text" id="JoineeName" /></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <button id="open" class="e-btn e-control" onclick="openPokers()">Join</button>
-            </td>
-        </tr>
-    </table>
+    </div>
+    <div class="content-page col-md-4 pane">
+        <table class="e-table">
+            <tr>
+
+                <td>
+                    <label><span>Session Name:</span></label>
+                    <div class="e-float-input">
+                        <input type="text" placeholder="Enter name" class="e-input" required>
+                        <span class="e-float-line"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label><span>Cards:</span></label>
+                    <input type="text" id="cardsList" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="open" class="e-btn e-control" style="float:right;" onclick="openPokers()">Create</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <div id="partial" class="e-partial-view" style="display: none">
         @{Html.RenderPartial("Sessions"); }
@@ -31,19 +43,17 @@
 
 
 <script>
-
+    ej.base.enableRipple(true);
     // Initialize DropDownList component
     var listObj = new ej.dropdowns.DropDownList({
-        dataSource:['12','112'],
-        // set the index value to select an item based on index at initial rendering
-        index: 2,
+        dataSource: [
+  '1,2,3,5,8,13,20,40,100', '1,2,3,5,8,13,20,40,?',
+  '1,2,4,8,16,32,64', '1,2,4,8,12,16,24,32,40', '1,2,3,5,8,13,20,?'],
         // set the placeholder to DropDownList input element
-        placeholder: 'Select a game',
-        // set the height of the popup element
-        popupHeight: '200px',
+        placeholder: 'Select a card',
 
     });
-    listObj.appendTo('#JoineeName');
+    listObj.appendTo('#cardsList');
     function openPokers() {
         $('.e-table').css('display', 'none');
         $('.e-partial-view').css('display', 'block');
@@ -51,10 +61,22 @@
 </script>
 
 <style>
-    .e-table{
-        margin-top: 8%;
+    .content-page {
+        padding: 15px;
     }
- .e-table td {
-    padding: 10px;
-}
+
+    .e-table td {
+        padding: 10px;
+    }
+
+    .e-bigger .container .e-float-input {
+        margin-top: 4px;
+    }
+    .pane{
+        margin-top: 8%;
+        padding: 10px;
+    }
+    .content-page {
+        float: right;
+    }
 </style>
