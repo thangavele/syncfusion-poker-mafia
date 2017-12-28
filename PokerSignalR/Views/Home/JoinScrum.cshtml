@@ -1,0 +1,61 @@
+﻿
+
+<div class="container outerwrap">
+
+    <table class="e-table">
+        <tr>
+            <td></td>
+            <td>
+                <h4>Session Details</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>Seesion ID :</td>
+            <td><input type="text" class="session e-input" id="sessionID" /> </td>
+        </tr>
+        <tr>
+            <td><span>Name:</span></td>
+            <td>
+                <input type="text" id="JoineeName" class="e-input" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="open" class="e-btn e-control" onclick="openPokers()">Join</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="partial" class="e-partial-view" style="display: none">
+            @{Html.RenderPartial("runPoker"); }
+        </div>
+</div>
+
+
+<script>
+    function openPokers() {
+        $('.e-table').css('display', 'none');
+        $('.e-partial-view').css('display', 'block');
+    }
+</script>
+
+<style>
+    .outerwrap .e-table {
+        margin: 8% 22%;
+    }
+
+        .outerwrap .e-table td {
+            padding: 10px;
+        }
+
+    .outerwrap {
+        width: 59%;
+    }
+
+    .outerwrap {
+        border: 1px dotted;
+        background-color: powderblue;
+        color: black;
+    }
+</style>
