@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    
     <link href="http://npmci.syncfusion.com/packages/development/fabric.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript">
         if (/MSIE d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write("<script src='https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js'><\/script>");
         }
+      
     </script>
     <script src="http://npmci.syncfusion.com/packages/production/dist/ej2.min.js" type="text/javascript"></script>
 
@@ -47,6 +49,7 @@
     </div>
 
     @RenderSection("scripts", required: false)
+    
 </body>
 
 </html>

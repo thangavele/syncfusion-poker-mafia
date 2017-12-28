@@ -1,0 +1,19 @@
+﻿
+<div class="container pane">
+    <div class="e-float-input">
+        <input type="text" id="message" placeholder="Enter name" class="e-input" required />
+        <span class="e-float-line"></span>
+    </div>
+    
+    <input type="button" id="sendmessage" value="Send" class="e-btn e-control"/>
+    <input type="hidden" id="displayname" />
+    <ul id="discussion"></ul>
+</div>
+<script>
+ 
+    // This optional function html-encodes messages for display in the page.
+    function htmlEncode(value) {
+        var encodedValue = $('<div />').text(value).html();
+        return encodedValue;
+    }
+</script>

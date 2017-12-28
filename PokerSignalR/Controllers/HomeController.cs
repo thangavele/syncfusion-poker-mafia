@@ -14,7 +14,7 @@ namespace PokerSignalR.Controllers
         }
         public ActionResult Chat()
         {
-            return View();
+            return PartialView("_Chat");
         }
         public ActionResult About()
         {
