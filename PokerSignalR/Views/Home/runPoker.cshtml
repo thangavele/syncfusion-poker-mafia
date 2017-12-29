@@ -1,38 +1,43 @@
 ﻿<div class="scrum-poker-cards"></div>
 <script>
     $(function () { 
-    var x = [1, 3, 5, 6];
-    for (i = 0; i < x.length; i++) {
-        var Wrapper = document.createElement('div')
-        Wrapper.className = ('wrapper');
-        var Poker = document.createElement('div');
-        Poker.className = ('poker');
-        var Inner = document.createElement('span');
-        Inner.className = ('inner');
-        var Points = document.createElement('span');
-        Points.id = ('points');
-        Points.innerHTML = x[i];
-        var Estimation = document.createElement('span');
-        Estimation.id = ('estimation');
-        Estimation.append("Estimated Time:" + x[i] * 4 + "hrs");
-        Inner.appendChild(Points);
-        Inner.appendChild(Estimation);
-        Poker.appendChild(Inner);
-        Wrapper.appendChild(Poker);
-        $('.scrum-poker-cards').append(Wrapper);
-        //document.getElementsByClassName('scrum-poker-cards').appendChild(Wrapper);
-    };
-
-    $(".wrapper").on("click", function (e) {
-        //var text = $(e.currentTarget).find("#points").text();
-        //'<%Session["UserName"] = "' + text + '"; %>';
-        //alert('<%=Session["text"] %>');
-
-        var userName = "Shekhar Shete";
-        '<%Session["UserName"] = "' + userName + '"; %>';
-        alert('<%=Session["UserName"] %>');
+        var x = [1, 3, 5, 6];
+        for (i = 0; i < x.length; i++) {
+            var Wrapper = document.createElement('div')
+            Wrapper.className = ('wrapper');
+            var Poker = document.createElement('div');
+            Poker.className = ('poker');
+            var Inner = document.createElement('span');
+            Inner.className = ('inner');
+            var Points = document.createElement('span');
+            Points.id = ('points');
+            Points.innerHTML = x[i];
+            var Estimation = document.createElement('span');
+            Estimation.id = ('estimation');
+            Estimation.append("Estimated Time:" + x[i] * 4 + "hrs");
+            Inner.appendChild(Points);
+            Inner.appendChild(Estimation);
+            Poker.appendChild(Inner);
+            Wrapper.appendChild(Poker);
+            $('.scrum-poker-cards').append(Wrapper);
+            //document.getElementsByClassName('scrum-poker-cards').appendChild(Wrapper);
+        };
+    //    $.connection.hub.start().done(function () {
+    //        $(".wrapper").on("click", function (e) {
+    //            //var text = $(e.currentTarget).find("#points").text();
+    //            //'<%Session["UserName"] = "' + text + '"; %>';
+    //            //alert('<%=Session["text"] %>');
+      
+    //            // Call the Send method on the hub.
+    //            chat.server.send($('#sessionname').val(),ddl);
+    //            // Clear text box and reset focus for next comment.
+    //            // $('#message').val('').focus();
+    //        });
+    //    var userName = "Shekhar Shete";
+    //    '<%Session["UserName"] = "' + userName + '"; %>';
+    //    alert('<%=Session["UserName"] %>');
+    //});
     });
-    })
 
 
 </script>

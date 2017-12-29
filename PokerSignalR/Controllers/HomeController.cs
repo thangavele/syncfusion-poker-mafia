@@ -16,10 +16,18 @@ namespace PokerSignalR.Controllers
         {
             return PartialView("_Chat");
         }
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Contact(string sessionid)
+        {
+            ViewBag.SessionID = "?sessionid="+ sessionid;
+            //Redirect("About");
+            return View();
+
+        }
+        public ActionResult About(string sessionid)
         {
             ViewBag.Message = "Your application description page.";
-
+            ViewBag.SessionID = sessionid;
             return View();
         }
 

@@ -1,7 +1,76 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
+<div class="container outerwrap">
+    <table class="e-table">
+        <tr>
+            <td></td>
+            <td>
+                <h4>Session Details</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>Seesion ID :</td>
+            <td><input type="text" class="session e-input" id="sessionID" value="@ViewBag.SessionID" /> </td>
+        </tr>
+        <tr>
+            <td><span>Name:</span></td>
+            <td>
+                <input type="text" id="JoineeName" class="e-input" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="open" class="e-btn e-control" onclick="openPokers()">Join</button>
+            </td>
+        </tr>
+    </table>
+    <div id="partial" class="e-partial-view" style="display: none">
+        @{Html.RenderPartial("runPoker"); }
+    </div>
+</div>
 
-<p>Use this area to provide additional information.</p>
+<script>
+    chat.client.addNewMessageToPage = function (CardList) {
+        // Add the message to the page.
+        $('#discussion').append('<li><strong>' + htmlEncode(name)
+            + '</strong>: ' + htmlEncode(message) + '</li>');
+        $('.e-table').css('display', 'none');
+        $('.e-partial-view').css('display', 'block');
+    };
+    function openPokers() {
+        $.connection.hub.start().done(function () {
+           // $(".wrapper").on("click", function (e) {
+                //var text = $(e.currentTarget).find("#points").text();
+                //'<%Session["UserName"] = "' + text + '"; %>';
+                //alert('<%=Session["text"] %>');
+
+                // Call the Send method on the hub.
+                chat.server.get();
+                // Clear text box and reset focus for next comment.
+                // $('#message').val('').focus();
+            //});
+                
+        });
+        
+      
+    }
+</script>
+<style>
+    .outerwrap .e-table {
+        margin: 8% 22%;
+    }
+
+        .outerwrap .e-table td {
+            padding: 10px;
+        }
+
+    .outerwrap {
+        width: 59%;
+    }
+
+    .outerwrap {
+        border: 1px dotted;
+        background-color: powderblue;
+        color: black;
+    }
+</style>

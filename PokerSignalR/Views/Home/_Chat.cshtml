@@ -10,7 +10,16 @@
     <ul id="discussion"></ul>
 </div>
 <script>
- 
+    $.get("/Home/Chat", function (args) {
+        $('.home-page').html(args);
+        // Reference the auto-generated proxy for the hub.
+        var sessionmaster = $.connection.masterHub;
+        // Create a function that the hub can call back to display messages.
+        sessionmaster.client.addNewMessageToPage = function (name, message) {
+            // Add the message to the page.
+            $('#discussion').append('<li><strong>' + htmlEncode(name)
+                + '</strong>: ' + htmlEncode(message) + '</li>');
+        };
     // This optional function html-encodes messages for display in the page.
     function htmlEncode(value) {
         var encodedValue = $('<div />').text(value).html();

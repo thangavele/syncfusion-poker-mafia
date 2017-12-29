@@ -15,7 +15,8 @@
                 <td>
                     <label><span>Session Name:</span></label>
                     <div class="e-float-input">
-                        <input type="text" placeholder="Enter name" class="e-input" required>
+                        <input type="text" id="sessionid" placeholder="Enter name" class="e-input" required>
+                        <input type="hidden" id="sessionname" />
                         <span class="e-float-line"></span>
                     </div>
                 </td>
@@ -24,6 +25,7 @@
                 <td>
                     <label><span>Cards:</span></label>
                     <input type="text" id="cardsList" />
+                    <input type="hidden" id="cardval" />
                 </td>
             </tr>
             <tr>
@@ -49,31 +51,33 @@
     });
     listObj.appendTo('#cardsList');
     function openPokers() {
-        $.get("/Home/Chat", function (args) {
-            $('.home-page').html(args);
-            // Reference the auto-generated proxy for the hub.
-            var chat = $.connection.masterHub;
-            // Create a function that the hub can call back to display messages.
-            chat.client.addNewMessageToPage = function (name, message) {
-                // Add the message to the page.
-                $('#discussion').append('<li><strong>' + htmlEncode(name)
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
-            };
-            // Get the user name and store it to prepend to messages.
-            $('#displayname').val(prompt('Enter your name:', ''));
-            // Set initial focus to message input box.
-            $('#message').focus();
-            // Start the connection.
-            $.connection.hub.start().done(function () {
-                $('#sendmessage').click(function () {
-                    // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
-                    // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
-                });
-            });
+        var link = '@Url.Action("Contact", "Home")';  // url should be enclosed by single quotes.
+        var args = {
+            sessionid: Math.round(Math.random() * 100000)
+        };
+        ddl = listObj.value;
+        $.connection.hub.start();
+        $.connection.hub.start().done(function () {
+            chat.server.send(args.sessionid, ddl);
+
         });
+        $.ajax({
+            type: "GET",
+            url: link, // url of your action
+            data: args, // parameters if available 
+            dataType: "html",
+            success: function (data) {
+                $("body").replaceWith(data);
+                // window.location.href = window.location.href + "Home/Contact/"+args.sessionid; // your action should return an object having [redirecturl] property
+
+            },
+            error: function (httpRequest, textStatus, errorThrown) {  // detailed error messsage 
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            }
+        });
+
     }
+   
 </script>
 
 <style>
