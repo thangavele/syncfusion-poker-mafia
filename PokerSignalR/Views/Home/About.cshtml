@@ -32,8 +32,9 @@
 <script>
     chat.client.addNewMessageToPage = function (CardList) {
         // Add the message to the page.
-        $('#discussion').append('<li><strong>' + htmlEncode(name)
-            + '</strong>: ' + htmlEncode(message) + '</li>');
+        //$('#discussion').append('<li><strong>' + htmlEncode(name)
+        //    + '</strong>: ' + htmlEncode(message) + '</li>');
+        createCards(CardList);
         $('.e-table').css('display', 'none');
         $('.e-partial-view').css('display', 'block');
     };

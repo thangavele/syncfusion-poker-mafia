@@ -37,6 +37,10 @@
             color: white;
         }
     </style>
+    <script type="text/javascript">
+        var chat = $.connection.masterHub, ddl;
+        $.connection.hub.start();
+    </script>
 </head>
 
 <body class="e-bigger">
@@ -49,10 +53,7 @@
     </div>
 
     @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        var chat = $.connection.masterHub, ddl;
-        $.connection.hub.start();
-    </script>
+   
     
 </body>
 
